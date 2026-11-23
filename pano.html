@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<base target="_top">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="https://antalyasaadet.github.io/egitim-raporu/favicon.png">
+<script src="config.js"></script>
+<meta name="color-scheme" content="light">
+<title>STK ve Halkla İlişkiler · Haftalık Pano</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#cd272d;--red-d:#a91c22;--redsoft:#fbe4e5;--bg:#fbf9f7;--card:#fff;--ink:#1d1b19;--ink2:#47423d;--muted:#857f78;--line:#ebe5de;--line2:#f3efea;
+  --good:#1f7a4d;--goodsoft:#e2f3e9;--warn:#a86a00;--warnsoft:#fff3dc;
+  --g0:#3f6fb5;--g0s:#e7eef9;--g1:#5e8a2e;--g1s:#eef4e4;--g2:#7a4fa3;--g2s:#f1eaf8;
+  --shadow:0 1px 2px rgba(60,20,20,.05),0 6px 20px rgba(60,20,20,.05);
+  --head:Montserrat,Inter,system-ui,"Segoe UI",Arial,sans-serif;--sans:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,select{font:inherit;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+@media(max-width:640px){.wrap{padding:0 14px}}
+
+header.top{background:#fff;border-top:4px solid var(--red);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:70px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:14px}
+.mark{font-family:var(--head);font-weight:800;color:var(--red);font-size:24px;letter-spacing:.02em;line-height:1}
+.mark small{display:block;font-size:10px;letter-spacing:.18em;color:var(--ink2);font-weight:700;margin-top:3px}
+.brand .sep{width:1px;height:36px;background:var(--line)}
+.brand .who{font-size:12.5px;color:var(--ink2);line-height:1.35}
+.brand .who b{display:block;color:var(--ink);font-size:13px}
+.status{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;color:var(--ink2);background:#fff;font-weight:500}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.chip.live{border-color:#bfe3cf;background:var(--goodsoft);color:var(--good)}
+.chip.live .dot{background:var(--good);animation:pulse 2s infinite}
+.chip.demo{border-color:#f1d9a6;background:var(--warnsoft);color:var(--warn)}
+.chip.demo .dot{background:var(--warn)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,122,77,.45)}70%{box-shadow:0 0 0 7px rgba(31,122,77,0)}100%{box-shadow:0 0 0 0 rgba(31,122,77,0)}}
+.btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--ink2)}
+.btn:hover{border-color:var(--red);color:var(--red)}
+.btn:disabled{opacity:.5;cursor:wait}
+
+.hero{background:linear-gradient(120deg,var(--red) 0%,#b9222a 100%);color:#fff}
+.hero .wrap{padding-top:26px;padding-bottom:26px}
+.eyebrow{font-family:var(--head);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.85}
+h1{font-family:var(--head);font-weight:800;font-size:30px;line-height:1.15;margin:6px 0 10px;letter-spacing:-.01em}
+@media(max-width:640px){h1{font-size:23px}}
+.lede{max-width:860px;font-size:15px;margin:0;color:rgba(255,255,255,.93)}
+.lede strong{color:#fff}
+
+.filters{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.filters .wrap{display:flex;gap:14px;align-items:end;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.f{display:flex;flex-direction:column;gap:4px}
+.f label{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+select{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 32px 8px 11px;font-size:13px;font-weight:500;min-width:210px;appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--red) 50%),linear-gradient(135deg,var(--red) 50%,transparent 50%);background-position:calc(100% - 16px) 55%,calc(100% - 11px) 55%;background-size:5px 5px;background-repeat:no-repeat}
+select:hover{border-color:var(--red)}
+.ftxt{margin-left:auto;color:var(--ink2);font-size:12.5px;align-self:center}
+.ftxt b{color:var(--red)}
+
+main{padding-top:24px}
+section{margin:0 0 34px}
+.sh{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+h2{font-family:var(--head);font-weight:700;font-size:19px;margin:0;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:5px;height:19px;border-radius:3px;background:var(--red)}
+.sub{color:var(--muted);font-size:13px;margin:3px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:1000px){.kpis{grid-template-columns:repeat(2,1fr)}.kpi.main{grid-column:1/-1}}
+.kpi{padding:15px 16px}
+.kpi .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.kpi .v{font-family:var(--head);font-weight:800;font-size:30px;line-height:1.1;margin-top:6px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.kpi .v small{font-size:15px;color:var(--muted);font-weight:600}
+.kpi .n{font-size:12px;color:var(--ink2);margin-top:6px}
+.kpi.main{background:linear-gradient(180deg,#fff,#fff6f6);border-color:#f3cfd0}
+.kpi.main .v{color:var(--red)}
+.bar{height:6px;background:var(--line2);border-radius:99px;margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--red);border-radius:99px}
+.delta{font-family:var(--sans);font-size:12px;font-weight:700;border-radius:999px;padding:2px 7px}
+.delta.up{background:var(--goodsoft);color:var(--good)}.delta.down{background:var(--redsoft);color:var(--red-d)}.delta.eq{background:var(--line2);color:var(--muted)}
+.missing{margin-top:12px;font-size:13px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pill{border:1px solid #f1c9cb;background:#fff;color:var(--red-d);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600;cursor:pointer}
+.pill:hover{background:var(--redsoft)}
+
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+.seg button{border:0;background:none;padding:7px 12px;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--ink2)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button.on{background:var(--red);color:#fff}
+.groups{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:1050px){.groups{grid-template-columns:1fr}}
+.gcard{overflow:hidden}
+.ghead{padding:14px 16px;background:var(--gs);border-bottom:1px solid var(--line);border-top:5px solid var(--gc)}
+.ghead .t{font-family:var(--head);font-weight:700;font-size:14px}
+.ghead .tot{font-family:var(--head);font-weight:800;font-size:28px;color:var(--gc);line-height:1.1;margin-top:4px}
+.ghead .tot small{font-family:var(--sans);font-size:12.5px;color:var(--ink2);font-weight:500;margin-left:6px}
+.ghead .o{font-size:12px;color:var(--ink2);margin-top:2px}
+.gbody{padding:8px 16px 14px}
+.gi{display:grid;grid-template-columns:1fr 54px;gap:4px 10px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--line2);cursor:default}
+.gi:last-child{border-bottom:0}
+.gi .l{font-size:12.8px;color:var(--ink)}
+.gi .val{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.gi .tr{grid-column:1/-1;height:7px;background:var(--line2);border-radius:99px;overflow:hidden}
+.gi .tr i{display:block;height:100%;background:var(--gc);border-radius:99px}
+.gi.zero .l,.gi.zero .val{color:var(--muted)}
+
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:900px){.charts{grid-template-columns:1fr}}
+.chart{padding:14px 16px}
+.chart .ct{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+.chart .ct b{font-size:13.5px}
+.chart select{min-width:0;padding:6px 28px 6px 9px;font-size:12.5px}
+svg text.axis{font-size:10.5px;fill:var(--muted)}
+svg text.lab{font-size:11px;font-weight:700;fill:var(--ink)}
+svg .gl{stroke:var(--line2)}
+svg .b{fill:var(--red)}
+svg .b.dim{fill:#efc2c4}
+svg .hit{fill:transparent;cursor:pointer}
+svg g.col:hover .b{fill:var(--red-d)}
+
+.tablewrap{overflow:auto;max-height:640px}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line2);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+th{position:sticky;top:0;background:#fff;z-index:2;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line);vertical-align:bottom}
+th button{background:none;border:0;padding:0;font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;cursor:pointer;text-align:right}
+th.sorted{color:var(--red)}
+th.c1,td.c1{text-align:left;position:sticky;left:0;background:#fff;z-index:1;font-weight:600}
+th.c1{z-index:3}
+th.gk{border-top:3px solid var(--g0)}th.gz{border-top:3px solid var(--g1)}th.gd{border-top:3px solid var(--g2)}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:#fff7f7}
+tr.none td{color:var(--muted)}
+tr.none td.c1{font-weight:500}
+tfoot td{font-weight:800;background:#fdf6f6;border-top:2px solid var(--line);position:sticky;bottom:0}
+tfoot td.c1{background:#fdf6f6}
+td.notes{text-align:left;white-space:normal;min-width:260px;max-width:420px;color:var(--ink2);font-size:12.5px}
+.dash{color:#c9c2ba}
+.tnote{font-size:12px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line2)}
+.cbar{display:flex;gap:8px;align-items:center}
+
+.checks .check{display:flex;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line2)}
+.checks .check:last-child{border-bottom:0}
+.check .ic{width:24px;height:24px;border-radius:50%;background:var(--warnsoft);color:var(--warn);display:grid;place-items:center;font-weight:800;flex:none}
+.check p{margin:2px 0 4px;color:var(--ink2);font-size:13px}
+.check ul{margin:4px 0 0;padding-left:18px;font-size:12.5px;color:var(--ink2)}
+
+.empty{padding:28px;text-align:center;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:20px 0 34px;color:var(--muted);font-size:12.5px;text-align:center}
+#tip{position:fixed;pointer-events:none;background:#1d1b19;color:#fff;font-size:12px;line-height:1.45;padding:8px 10px;border-radius:8px;max-width:320px;opacity:0;transition:opacity .12s;z-index:50}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><div class="mark">SAADET<small>ANTALYA</small></div><div class="sep"></div>
+    <div class="who"><b>STK ve Halkla İlişkiler Başkanlığı</b>Haftalık rapor panosu</div></div>
+  <div class="status"><span class="chip" id="srcChip"><span class="dot"></span><span id="srcTxt">Yükleniyor…</span></span>
+    <button class="btn" id="reload" type="button">↻ Yenile</button></div>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div class="eyebrow">Saadet Partisi Antalya İl Başkanlığı</div>
+  <h1>STK ve Halkla İlişkiler Haftalık Raporu</h1>
+  <p class="lede" id="lede">Veriler yükleniyor…</p>
+</div></div>
+
+<div class="filters"><div class="wrap">
+  <div class="f"><label for="fPer">Dönem</label><select id="fPer"></select></div>
+  <div class="f"><label for="fDist">İlçe</label><select id="fDist"></select></div>
+  <div class="ftxt" id="fInfo"></div>
+</div></div>
+
+<main class="wrap">
+  <section id="ozet">
+    <div class="kpis" id="kpis"></div>
+    <div class="missing" id="missing"></div>
+  </section>
+
+  <section id="alanlar">
+    <div class="sh"><div><h2>Faaliyet alanları</h2><p class="sub" id="alanSub"></p></div>
+      <div class="seg" id="metSeg"><button data-m="0" class="on">Faaliyet</button><button data-m="1">Ulaşılan kişi</button><button data-m="2">Katılan görevli</button></div></div>
+    <div class="groups" id="groups"></div>
+  </section>
+
+  <section id="gelisim">
+    <div class="sh"><div><h2>Haftalık gelişim</h2><p class="sub" id="gelSub"></p></div></div>
+    <div class="charts">
+      <div class="card chart"><div class="ct"><b>Rapor giren ilçe sayısı</b><span class="sub" style="margin:0">19 ilçe üzerinden</span></div><div id="ch1"></div></div>
+      <div class="card chart"><div class="ct"><b id="ch2t"></b><select id="ch2m" aria-label="Grafik ölçütü"></select></div><div id="ch2"></div></div>
+    </div>
+  </section>
+
+  <section id="ilceler">
+    <div class="sh"><div><h2 id="cmpTitle">İlçe karşılaştırması</h2><p class="sub" id="cmpSub"></p></div><div class="cbar" id="cmpBar"></div></div>
+    <div class="card"><div class="tablewrap"><table id="cmp"></table></div><div class="tnote" id="cmpNote"></div></div>
+  </section>
+
+  <section id="kontrol" hidden>
+    <div class="sh"><div><h2>Veri kontrolü</h2><p class="sub">Seçili dönemde gözden geçirilmesi gereken kayıtlar.</p></div></div>
+    <div class="card checks" id="checks"></div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div id="footSrc"></div>
+  <div style="margin-top:6px">Bu pano, Saadet Partisi Antalya İl Başkanlığı Tanıtım, Medya ve İletişim Komisyonu tarafından hazırlanmıştır.</div>
+</div></footer>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const AYAR = {"ilceler":["Akseki","Aksu","Alanya","Demre","Döşemealtı","Elmalı","Finike","Gazipaşa","Gündoğmuş","İbradı","Kaş","Kemer","Kepez","Konyaaltı","Korkuteli","Kumluca","Manavgat","Muratpaşa","Serik"],"gruplar":[{"id":"kt","ad":"Katılım ve Temsil Faaliyetleri","kalemler":[["STK, Milko, Vakıf, Dernek ve Sendika Faaliyetlerine Katılım","STK, vakıf, dernek faaliyetleri"],["Resmi Programlara ve Spor Müsabakalarına Katılım","Resmi program ve spor"],["Nişan, Düğün, Cenaze ve Taziyelere Katılım","Nişan, düğün, cenaze, taziye"],["Fuar, Panayır, Açılış, Kutlama, Mahalle/Köy Etkinliklerine Katılım","Fuar, panayır, açılış, mahalle/köy"],["Siyasi Partilerin ve STK'ların Kongrelerine Katılım","Parti ve STK kongreleri"],["Diğer Faaliyetlere Katılım","Diğer faaliyetler"]]},{"id":"zy","ad":"Ziyaretler","kalemler":[["Cadde, Sokak, Kafe ve Kahvehane Ziyaretleri","Cadde, sokak, kafe, kahvehane"],["Resmi Kurum, Belediye ve Muhtarlar Ziyaretleri","Resmi kurum, belediye, muhtar"],["STK, Vakıf, Dernek ve Sendika, Aile Ziyaretleri","STK, vakıf, dernek, aile"],["Hemşeri ve Kültürel Dernekler, Gençlik STK'ları, Spor Kulüpleri Ziyareti","Hemşeri, gençlik, spor kulübü"],["Etkili Fertler, Kanaat Önderleri, Cami, Cami Dernekleri, Cemaat, İmam Ziyareti","Kanaat önderi, cami, cemaat"],["Esnaf, İşyeri, Sanayi Siteleri, Meslek Odaları ve Meslek Grupları Ziyareti","Esnaf, sanayi, meslek odası"],["Hac-Umre, Hasta, Hastane ve Huzurevi Ziyareti","Hac-umre, hasta, huzurevi"],["Yapılan Diğer Ziyaretler","Diğer ziyaretler"]]},{"id":"dv","ad":"Partimizin Etkinliklerine Davetler","kalemler":[["Şehit-Gazi Aileleri/Dernekleri, Kanaat Önderleri (Emekli Müftü, İmam)","Şehit-gazi aileleri, kanaat önderleri"],["Konferans, Sohbet, Piknik, İftar, Kahvaltı vb. Çalışmalarımıza Davetler","Konferans, sohbet, piknik, iftar"],["Hemşeri ve Kültürel Dernek Başkanları / Üyeleri Daveti","Hemşeri ve kültür dernekleri"],["Esnaflar, Esnaf Odaları ve Meslek Örgütleri","Esnaf ve meslek örgütleri"],["Emekliler, Engelliler, Muhtarlar, Sporcular ve Dernekler","Emekli, engelli, muhtar, sporcu"],["Bunların Dışındaki Diğer Kesimleri Partimize Davetler","Diğer kesimler"]]}],"metrikler":["Faaliyet Sayısı","Ulaşılan Kişi Sayısı","Katılan Görevli Sayısı"]};
+const SERVER = null;
+const GAS = typeof google!=="undefined"&&google.script&&google.script.run;
+const API = window.API_URL || "";
+const REFRESH_MS = 5*60*1000;
+const ILCELER = AYAR.ilceler, N_ILCE = ILCELER.length;
+const AYLAR=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+const MET=["Faaliyet","Ulaşılan kişi","Katılan görevli"];
+const ITEMS=[];AYAR.gruplar.forEach((g,gi)=>g.kalemler.forEach(k=>ITEMS.push({gi,ad:k[0],kisa:k[1],i:ITEMS.length})));
+const GSHORT=["Katılım ve Temsil","Ziyaretler","Davetler"];
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=n=>n==null?"—":Number(n).toLocaleString("tr-TR");
+const trLower=s=>s.toLocaleLowerCase("tr-TR");
+const ymd=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const ym=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
+const kdate=k=>{const [y,m,d]=k.split("-").map(Number);return new Date(y,m-1,d||1)};
+function monday(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-(x.getDay()+6)%7);return x}
+const moOf=w=>{const t=kdate(w);t.setDate(t.getDate()+3);return ym(t)};   
+function wlabel(k,short){const a=kdate(k),b=new Date(a);b.setDate(a.getDate()+6);
+  if(short)return `${a.getDate()} ${AYLAR[a.getMonth()].slice(0,3)}`;
+  return a.getMonth()===b.getMonth()?`${a.getDate()}–${b.getDate()} ${AYLAR[a.getMonth()]}`:`${a.getDate()} ${AYLAR[a.getMonth()]} – ${b.getDate()} ${AYLAR[b.getMonth()]}`}
+const mlabel=k=>{const d=kdate(k);return `${AYLAR[d.getMonth()]} ${d.getFullYear()}`};
+const dshort=s=>s?kdate(s).toLocaleDateString("tr-TR",{day:"numeric",month:"short"}):"";
+
+
+let RECORDS=[],WEEKS=[],MONTHS=[],SOURCE={mode:"",at:null};
+function build(list){
+  const by=new Map();
+  for(const k of list||[]){
+    if(!k||!k.ilce||!/^\d{4}-\d{2}-\d{2}$/.test(k.hafta))continue;
+    const r={ilce:k.ilce,wk:k.hafta,mo:moOf(k.hafta),tarih:k.tarih||"",uye:+k.uye||0,katilim:+k.katilim||0,
+      d:Array.from({length:ITEMS.length*3},(_,i)=>+((k.d||[])[i])||0),not:(k.not||"").trim(),ts:+k.ts||0};
+    const key=r.ilce+"|"+r.wk;const p=by.get(key);if(!p||r.ts>=p.ts)by.set(key,r)}
+  RECORDS=[...by.values()];
+  const cw=curWeek();const ws=RECORDS.map(r=>r.wk).sort();WEEKS=[];
+  if(ws.length){const d=kdate(ws[0]);const end=ws.at(-1)>cw?ws.at(-1):cw;while(ymd(d)<=end){WEEKS.push(ymd(d));d.setDate(d.getDate()+7)}}
+  MONTHS=[...new Set(WEEKS.map(moOf))].sort();
+}
+const tot=(recs,m)=>recs.reduce((a,r)=>{for(let i=0;i<ITEMS.length;i++)a+=r.d[i*3+m];return a},0);
+const gtot=(recs,gi,m)=>recs.reduce((a,r)=>{for(const it of ITEMS)if(it.gi===gi)a+=r.d[it.i*3+m];return a},0);
+const itot=(recs,i,m)=>recs.reduce((a,r)=>a+r.d[i*3+m],0);
+const ksum=(recs,k)=>recs.reduce((a,r)=>a+(r[k]||0),0);
+
+
+const state={per:null,dist:"all",met:0,ch2:"m0",sort:"c1",dir:1};
+const curWeek=()=>ymd(monday(new Date()));
+function defaultPer(){const cur=curWeek();const past=WEEKS.filter(w=>w<=cur);let w=past.at(-1)||WEEKS.at(-1);
+  const cnt=x=>RECORDS.filter(r=>r.wk===x).length;
+  if(past.length>1&&cnt(w)<Math.max(1,cnt(past.at(-2))*0.5))w=past.at(-2);return w?"w:"+w:"all"}
+function perParts(p=state.per){const [t,k]=p.split(":");return {t,k}}
+function inPer(r,p=state.per){const {t,k}=perParts(p);if(t==="all")return true;if(t==="w")return r.wk===k;return r.mo===k}
+function perWeeks(p=state.per){const {t,k}=perParts(p);const cur=curWeek();if(t==="w")return [k];
+  const ws=WEEKS.filter(w=>w<=cur);return t==="all"?ws:ws.filter(w=>moOf(w)===k)}
+function perLabel(p=state.per){const {t,k}=perParts(p);if(t==="all")return "Tüm dönem";if(t==="m")return mlabel(k);return wlabel(k)+" haftası"}
+function prevPer(){const {t,k}=perParts();if(t==="all")return null;
+  if(t==="w"){const i=WEEKS.indexOf(k);return i>0?"w:"+WEEKS[i-1]:null}
+  const i=MONTHS.indexOf(k);return i>0?"m:"+MONTHS[i-1]:null}
+const distOK=r=>state.dist==="all"||r.ilce===state.dist;
+const cur=()=>RECORDS.filter(r=>inPer(r)&&distOK(r));
+
+
+function render(){renderFilters();renderLede();renderKPIs();renderGroups();renderCharts();renderTable();renderChecks()}
+
+function renderFilters(){
+  const fp=$("#fPer");const cw=curWeek();let h=`<option value="all">Tüm dönem</option>`;
+  for(const m of [...MONTHS].reverse()){const ws=WEEKS.filter(w=>moOf(w)===m&&w<=cw).reverse();if(!ws.length)continue;
+    h+=`<optgroup label="${mlabel(m)}"><option value="m:${m}">${mlabel(m)} · tüm ay</option>`+ws.map(w=>`<option value="w:${w}">${wlabel(w)}${w===cw?" (bu hafta)":""}</option>`).join("")+`</optgroup>`}
+  fp.innerHTML=h;fp.value=state.per;
+  const fd=$("#fDist");fd.innerHTML=`<option value="all">Tüm ilçeler (${N_ILCE})</option>`+ILCELER.map(i=>`<option>${esc(i)}</option>`).join("");fd.value=state.dist;
+  $("#fInfo").innerHTML=`<b>${perLabel()}</b> · ${cur().length} rapor`;
+}
+function renderLede(){
+  const recs=cur();if(!RECORDS.length){$("#lede").innerHTML="Henüz rapor girilmedi. İlçelerden ilk raporlar geldiğinde pano kendiliğinden dolacak.";return}
+  const ilc=new Set(recs.map(r=>r.ilce)).size;
+  $("#lede").innerHTML=(state.dist==="all"?`<strong>${perLabel()}</strong> · Rapor giren ilçe: <strong>${ilc} / ${N_ILCE}</strong>. `:`<strong>${esc(state.dist)}</strong> · ${perLabel()} · Girilen rapor: <strong>${recs.length}</strong>. `)+
+    `Toplam <strong>${fmt(tot(recs,0))}</strong> faaliyetle <strong>${fmt(tot(recs,1))}</strong> kişiye ulaşıldı; faaliyetlere <strong>${fmt(tot(recs,2))}</strong> görevli katıldı.`;
+}
+function delta(c,p,lab,pct){if(p==null)return "";const d=c-p;if(!d)return `<span class="delta eq" title="${lab}">=</span>`;
+  return `<span class="delta ${d>0?"up":"down"}" title="${lab}">${d>0?"▲":"▼"} ${pct?Math.abs(d)+" puan":fmt(Math.abs(d))}</span>`}
+function renderKPIs(){
+  const recs=cur();const pp=prevPer();const prev=pp?RECORDS.filter(r=>inPer(r,pp)&&distOK(r)):null;
+  const plab=pp?(pp[0]==="w"?"Önceki hafta: "+wlabel(pp.slice(2)):"Önceki ay: "+mlabel(pp.slice(2))):"";
+  const nw=perWeeks().length||1;const expected=(state.dist==="all"?N_ILCE:1)*nw;const pct=(a,b)=>b?Math.round(a/b*100):0;
+  const ilc=new Set(recs.map(r=>r.ilce)).size;const k=[];
+  if(state.dist==="all"&&nw===1)
+    k.push(`<div class="card kpi main"><div class="k">Rapor giren ilçe</div><div class="v">${ilc}<small> / ${N_ILCE}</small>${prev?delta(ilc,new Set(prev.map(r=>r.ilce)).size,plab):""}</div><div class="bar"><i style="width:${pct(ilc,N_ILCE)}%"></i></div><div class="n">Doluluk oranı: %${pct(ilc,N_ILCE)}</div></div>`);
+  else
+    k.push(`<div class="card kpi main"><div class="k">Girilen rapor</div><div class="v">${recs.length}<small> / ${expected}</small>${prev?delta(recs.length,prev.length,plab):""}</div><div class="bar"><i style="width:${pct(recs.length,expected)}%"></i></div><div class="n">${state.dist==="all"?`${ilc} ilçe · `:""}${nw} haftada beklenen ${expected} rapor · %${pct(recs.length,expected)}</div></div>`);
+  for(const m of [0,1,2]){const s=tot(recs,m);k.push(`<div class="card kpi"><div class="k">${["Toplam faaliyet","Ulaşılan kişi","Katılan görevli"][m]}</div><div class="v">${fmt(s)}${prev?delta(s,tot(prev,m),plab):""}</div><div class="n">${prev?esc(plab)+": "+fmt(tot(prev,m)):"&nbsp;"}</div></div>`)}
+  const wu=recs.filter(r=>r.uye>0);const U=ksum(wu,"uye"),K=ksum(wu,"katilim");const rate=pct(K,U);
+  const pwu=prev?prev.filter(r=>r.uye>0):null;const prate=pwu&&pwu.length?pct(ksum(pwu,"katilim"),ksum(pwu,"uye")):null;
+  k.push(`<div class="card kpi"><div class="k">Birim toplantısı katılımı</div><div class="v">${U?"%"+rate:"—"}${U&&prate!=null?delta(rate,prate,plab,true):""}</div><div class="bar"><i style="width:${rate}%"></i></div><div class="n">${U?`${fmt(K)} / ${fmt(U)} birim üyesi`:"Birim üye sayısı girilmemiş"}</div></div>`);
+  $("#kpis").innerHTML=k.join("");
+  const m=$("#missing");if(state.dist!=="all"||!RECORDS.length){m.innerHTML="";return}
+  const have=new Set(recs.map(r=>r.ilce));const miss=ILCELER.filter(i=>!have.has(i));
+  m.innerHTML=miss.length?`<b>${nw===1?"Rapor girmeyen":"Bu dönemde hiç rapor girmeyen"} ${miss.length} ilçe:</b> ${miss.map(i=>`<button class="pill" data-i="${esc(i)}">${esc(i)}</button>`).join("")}`:`<b style="color:var(--good)">Tüm ilçeler rapor girdi.</b>`;
+  m.onclick=e=>{const b=e.target.closest("[data-i]");if(b){state.dist=b.dataset.i;sync()}};
+}
+function renderGroups(){
+  const recs=cur();const m=state.met;
+  $("#alanSub").textContent=`${state.dist==="all"?"Tüm ilçeler":state.dist} · ${perLabel()} · Çubuklar 20 kalemin tamamına göre ölçeklenir.`;
+  document.querySelectorAll("#metSeg button").forEach(b=>b.classList.toggle("on",+b.dataset.m===m));
+  const vals=ITEMS.map(it=>itot(recs,it.i,m));const max=Math.max(1,...vals);
+  $("#groups").innerHTML=AYAR.gruplar.map((g,gi)=>{
+    const o=[0,1,2].filter(x=>x!==m).map(x=>`${MET[x]}: <b>${fmt(gtot(recs,gi,x))}</b>`).join(" · ");
+    return `<div class="card gcard" style="--gc:var(--g${gi});--gs:var(--g${gi}s)"><div class="ghead"><div class="t">${esc(g.ad)}</div>
+      <div class="tot">${fmt(gtot(recs,gi,m))}<small>${MET[m].toLocaleLowerCase("tr-TR")}</small></div><div class="o">${o}</div></div>
+      <div class="gbody">${ITEMS.filter(it=>it.gi===gi).map(it=>{const v=vals[it.i];
+        return `<div class="gi ${v?"":"zero"}" data-it="${it.i}"><span class="l">${esc(it.kisa)}</span><span class="val">${fmt(v)}</span><span class="tr"><i style="width:${v/max*100}%"></i></span></div>`}).join("")}</div></div>`}).join("");
+  tipOn($("#groups"),".gi",el=>{const i=+el.dataset.it;return `<b>${esc(ITEMS[i].ad)}</b><br>${MET.map((l,x)=>`${l}: ${fmt(itot(recs,i,x))}`).join("<br>")}`});
+}
+function niceStep(m){const raw=m/4;const p=Math.pow(10,Math.floor(Math.log10(raw)));const n=raw/p;return Math.max(1,(n<=1?1:n<=2?2:n<=5?5:10)*p)}
+function roundTop(x,y,w,h,r){r=Math.min(r,h);return `M${x},${y+h}V${y+r}Q${x},${y} ${x+r},${y}H${x+w-r}Q${x+w},${y} ${x+w},${y+r}V${y+h}Z`}
+function barChart(el,data,{sel,onClick,tip}){
+  if(!data.length){el.innerHTML=`<div class="empty">Henüz veri yok.</div>`;return}
+  const W=560,H=210,P={l:34,r:6,t:18,b:26};const iw=W-P.l-P.r,ih=H-P.t-P.b;
+  const max=Math.max(1,...data.map(d=>d.v||0));const step=niceStep(max);const top=Math.ceil(max/step)*step;
+  const bw=iw/data.length;const y=v=>P.t+ih-(v/top)*ih;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img">`;
+  for(let v=0;v<=top;v+=step)s+=`<line class="gl" x1="${P.l}" x2="${W-P.r}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${P.l-6}" y="${y(v)+3}" text-anchor="end">${fmt(v)}</text>`;
+  const anySel=sel&&sel.size;
+  data.forEach((d,i)=>{const x=P.l+i*bw,w=Math.max(2,Math.min(28,bw-4)),cx=x+bw/2;const v=d.v||0,h=Math.max(v?2:0,ih*(v/top));const on=!anySel||sel.has(d.k);
+    s+=`<g class="col" data-k="${d.k}">`;if(v)s+=`<path class="b ${on?"":"dim"}" d="${roundTop(cx-w/2,P.t+ih-h,w,h,Math.min(4,w/2))}"/>`;
+    s+=`<rect class="hit" x="${x}" y="${P.t}" width="${bw}" height="${ih}"/></g>`;
+    if(anySel&&sel.has(d.k)&&v&&sel.size<=6)s+=`<text class="lab" x="${cx}" y="${P.t+ih-h-5}" text-anchor="middle">${fmt(v)}</text>`;
+    if(data.length<=10||i%2===(data.length-1)%2)s+=`<text class="axis" x="${cx}" y="${H-8}" text-anchor="middle">${d.l}</text>`});
+  s+=`<line x1="${P.l}" x2="${W-P.r}" y1="${P.t+ih}" y2="${P.t+ih}" stroke="var(--line)"/></svg>`;
+  el.innerHTML=s;el.onclick=e=>{const g=e.target.closest("g.col");if(g&&onClick)onClick(g.dataset.k)};
+  tipOn(el,"g.col",g=>tip(data.find(d=>d.k===g.dataset.k)));
+}
+const CH2=[["m0","Toplam faaliyet"],["m1","Ulaşılan kişi"],["m2","Katılan görevli"],["g0","Katılım ve Temsil · faaliyet"],["g1","Ziyaretler · faaliyet"],["g2","Davetler · faaliyet"],["kat","Birim toplantısına katılan"]];
+function ch2val(recs,key){const t=key[0],n=+key.slice(1);if(t==="m")return tot(recs,n);if(t==="g")return gtot(recs,n,0);return ksum(recs,"katilim")}
+function renderCharts(){
+  const {t}=perParts();const ws=WEEKS.filter(w=>w<=curWeek());const sel=t==="all"?null:new Set(perWeeks());
+  const ofDist=RECORDS.filter(distOK);
+  $("#gelSub").textContent=(state.dist==="all"?"Tüm ilçeler":state.dist)+" · Seçili dönemin haftaları koyu renkte. Bir sütuna tıklayınca o hafta seçilir.";
+  const d1=ws.map(w=>{const r=RECORDS.filter(x=>x.wk===w);return {k:w,l:wlabel(w,true),v:new Set(r.map(x=>x.ilce)).size}});
+  barChart($("#ch1"),d1,{sel,onClick:k=>{state.per="w:"+k;sync()},tip:d=>`<b>${wlabel(d.k)}</b><br>${d.v} / ${N_ILCE} ilçe rapor girdi`});
+  const ms=$("#ch2m");ms.innerHTML=CH2.map(([k,l])=>`<option value="${k}">${l}</option>`).join("");ms.value=state.ch2;
+  const lab=CH2.find(x=>x[0]===state.ch2)[1];$("#ch2t").textContent=lab+(state.dist==="all"?"":" · "+state.dist);
+  const d2=ws.map(w=>{const r=ofDist.filter(x=>x.wk===w);return {k:w,l:wlabel(w,true),v:ch2val(r,state.ch2)}});
+  barChart($("#ch2"),d2,{sel,onClick:k=>{state.per="w:"+k;sync()},tip:d=>`<b>${wlabel(d.k)}</b><br>${lab}: ${fmt(d.v)}`});
+}
+function renderTable(){
+  const recs=RECORDS.filter(r=>inPer(r));const nw=perWeeks().length;const single=state.dist!=="all";
+  const nc=v=>v==null?`<span class="dash">—</span>`:fmt(v);
+  const katCell=(k,u)=>u?`<span title="${fmt(k)} / ${fmt(u)} kişi">%${Math.round(k/u*100)}</span>`:`<span class="dash">—</span>`;
+  const mk=(rs,o)=>{o.g0=gtot(rs,0,0);o.g1=gtot(rs,1,0);o.g2=gtot(rs,2,0);o.f=tot(rs,0);o.u=tot(rs,1);o.gr=tot(rs,2);return o};
+  let rows,COLS;
+  if(single){
+    $("#cmpTitle").textContent=state.dist+" · haftalık raporlar";
+    $("#cmpSub").textContent=`${perLabel()} · Her hafta ayrı satırda, en yenisi üstte.`;
+    $("#cmpBar").innerHTML=`<button class="btn" id="backAll" type="button">← Tüm ilçeler</button>`;$("#backAll").onclick=()=>{state.dist="all";sync()};
+    rows=recs.filter(r=>r.ilce===state.dist).sort((a,b)=>b.wk.localeCompare(a.wk)).map(r=>mk([r],{c1:wlabel(r.wk),tarih:r.tarih,uye:r.uye||null,kat:r.katilim,katU:r.uye,not:r.not}));
+    COLS=[["c1","Hafta","c1"],["tarih","Toplantı"],["uye","Birim üye"],["katp","Toplantı katılımı"],["g0","Katılım ve Temsil","gk"],["g1","Ziyaretler","gz"],["g2","Davetler","gd"],["f","Toplam faaliyet"],["u","Ulaşılan kişi"],["gr","Katılan görevli"],["not","Notlar"]];
+  }else{
+    $("#cmpTitle").textContent="İlçe karşılaştırması";
+    $("#cmpSub").textContent=`${perLabel()} · ${nw>1?nw+" haftanın toplamı":"tek hafta"}. Başlığa tıklayarak sıralayın, satıra tıklayarak ilçeyi açın.`;
+    $("#cmpBar").innerHTML="";
+    rows=ILCELER.map(i=>{const r=recs.filter(x=>x.ilce===i).sort((a,b)=>a.wk.localeCompare(b.wk));const wu=r.filter(x=>x.uye>0);
+      return mk(r,{c1:i,rap:r.length,none:!r.length,uye:wu.length?wu.at(-1).uye:null,kat:ksum(wu,"katilim"),katU:ksum(wu,"uye")})});
+    COLS=[["c1","İlçe","c1"],["rap","Rapor"],["uye","Birim üye"],["katp","Toplantı katılımı"],["g0","Katılım ve Temsil","gk"],["g1","Ziyaretler","gz"],["g2","Davetler","gd"],["f","Toplam faaliyet"],["u","Ulaşılan kişi"],["gr","Katılan görevli"]];
+    const val=(o,k)=>k==="katp"?(o.katU?o.kat/o.katU:-1):k==="c1"?o.c1:(o[k]??-1);
+    const k=state.sort,dir=state.dir;
+    rows.sort((a,b)=>{const A=val(a,k),B=val(b,k);if(typeof A==="string")return dir*A.localeCompare(B,"tr");return dir*(B-A)||a.c1.localeCompare(b.c1,"tr")});
+  }
+  let h=`<thead><tr>${COLS.map(([c,l,cls])=>{const s=!single&&c!=="not";const on=!single&&c===state.sort;
+    return `<th class="${cls||""} ${on?"sorted":""}" ${c==="not"?'style="text-align:left"':""}>${s?`<button data-s="${c}" type="button">${l}${on?(state.dir>0?" ↓":" ↑"):""}</button>`:l}</th>`}).join("")}</tr></thead><tbody>`;
+  if(!rows.length)h+=`<tr><td class="c1"></td><td colspan="${COLS.length-1}" style="text-align:left;color:var(--muted)">Bu dönemde ${esc(state.dist)} için rapor yok.</td></tr>`;
+  for(const o of rows){
+    const cell={c1:esc(o.c1),rap:o.none?"Yok":`${o.rap} / ${nw}`,tarih:o.tarih?dshort(o.tarih):`<span class="dash">—</span>`,uye:nc(o.uye),katp:katCell(o.kat,o.katU),
+      g0:fmt(o.g0),g1:fmt(o.g1),g2:fmt(o.g2),f:`<b>${fmt(o.f)}</b>`,u:fmt(o.u),gr:fmt(o.gr),not:o.not?esc(o.not):`<span class="dash">—</span>`};
+    h+=`<tr class="${o.none?"none":""}" ${single?"":`data-i="${esc(o.c1)}"`}>${COLS.map(([c,,cls])=>`<td class="${c==="c1"?"c1":c==="not"?"notes":""}">${cell[c]}</td>`).join("")}</tr>`}
+  if(rows.length){const S=k=>rows.reduce((a,o)=>a+(o[k]||0),0);
+    const foot={c1:single?"Toplam":"Antalya",rap:`${S("rap")}`,tarih:"",uye:single?"":fmt(S("uye")),katp:katCell(S("kat"),S("katU")),g0:fmt(S("g0")),g1:fmt(S("g1")),g2:fmt(S("g2")),f:fmt(S("f")),u:fmt(S("u")),gr:fmt(S("gr")),not:""};
+    h+=`</tbody><tfoot><tr>${COLS.map(([c])=>`<td class="${c==="c1"?"c1":""}">${foot[c]}</td>`).join("")}</tr></tfoot>`}
+  const t=$("#cmp");t.innerHTML=h;
+  $("#cmpNote").textContent=single?"Toplantı katılımı = katılan / birim üye sayısı. Aynı haftaya ikinci rapor girilirse eskisinin yerine geçer."
+    :"Grup sütunları faaliyet sayısıdır. Toplantı katılımı = katılan / birim üye sayısı (birim üye sayısı girilen raporlar). “—” bilgi girilmemiş demektir.";
+  t.onclick=e=>{const b=e.target.closest("button[data-s]");if(b){const s=b.dataset.s;if(state.sort===s)state.dir*=-1;else{state.sort=s;state.dir=s==="c1"?1:1}renderTable();return}
+    const tr=e.target.closest("tr[data-i]");if(tr){state.dist=tr.dataset.i;sync();$("#ozet").scrollIntoView({behavior:"smooth",block:"start"})}};
+}
+function renderChecks(){
+  const recs=cur();const L=[];
+  const item=(title,body,list)=>`<div class="check"><div class="ic">!</div><div><b>${title}</b><p>${body}</p>${list.length?`<ul>${list.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}</div></div>`;
+  const zero=recs.filter(r=>tot([r],0)===0);
+  if(zero.length)L.push(item(`Faaliyet girilmeyen rapor: ${zero.length}`,"Rapor gönderilmiş ama hiçbir kalemde faaliyet sayısı yok.",zero.map(r=>`${esc(r.ilce)} · ${wlabel(r.wk)}`)));
+  const odd=recs.filter(r=>ITEMS.some(it=>!r.d[it.i*3]&&(r.d[it.i*3+1]||r.d[it.i*3+2])));
+  if(odd.length)L.push(item(`Faaliyeti 0 olup kişi/görevli girilen rapor: ${odd.length}`,"Bu kalemlerde faaliyet sayısı unutulmuş olabilir.",odd.map(r=>`${esc(r.ilce)} · ${wlabel(r.wk)}`)));
+  const noU=recs.filter(r=>!r.uye);
+  if(noU.length)L.push(item(`Birim üye sayısı girilmeyen rapor: ${noU.length}`,"Toplantı katılım oranı bu raporlar için hesaplanamıyor.",noU.map(r=>`${esc(r.ilce)} · ${wlabel(r.wk)}`)));
+  $("#kontrol").hidden=!L.length;$("#checks").innerHTML=L.join("");
+}
+
+
+const tip=$("#tip");
+function tipOn(root,sel,html){root.onmousemove=e=>{const el=e.target.closest(sel);const c=el&&root.contains(el)?html(el):null;if(!c){tip.style.opacity=0;return}
+  tip.innerHTML=c;tip.style.opacity=1;const r=tip.getBoundingClientRect();let x=e.clientX+14,y=e.clientY+14;if(x+r.width>innerWidth-8)x=e.clientX-r.width-14;if(y+r.height>innerHeight-8)y=e.clientY-r.height-14;tip.style.left=x+"px";tip.style.top=y+"px"};
+  root.onmouseleave=()=>tip.style.opacity=0}
+
+
+function setSource(mode,at){SOURCE={mode,at};$("#srcChip").className="chip "+mode;
+  const t=at.toLocaleString("tr-TR",{dateStyle:"short",timeStyle:"short"});
+  $("#srcTxt").textContent=mode==="live"?`Canlı · ${t}`:`Önizleme · örnek veri`;
+  $("#footSrc").textContent=mode==="live"?"Veriler ilçe raporlarından canlı okunur, 5 dakikada bir yenilenir.":"Bu bir önizlemedir; gösterilen sayılar örnek veridir.";}
+let first=true;
+async function load(){
+  const btn=$("#reload");btn.disabled=true;
+  try{
+    if(first&&SERVER&&SERVER.kayitlar){build(SERVER.kayitlar);setSource(SERVER.demo?"demo":"live",new Date(SERVER.at))}
+    else if(GAS){const d=await new Promise((ok,no)=>google.script.run.withSuccessHandler(ok).withFailureHandler(no).veriAl());build(d.kayitlar);setSource("live",new Date(d.at))}
+    else if(API){const r=await fetch(API+"?api=veri&_="+Date.now(),{cache:"no-store"});const d=await r.json();build(d.kayitlar);setSource("live",new Date(d.at))}
+  }catch(e){$("#srcChip").className="chip demo";$("#srcTxt").textContent="Bağlantı hatası · tekrar deneyin"}
+  first=false;btn.disabled=false;
+  const valid=p=>p&&(p==="all"||(p.startsWith("w:")&&WEEKS.includes(p.slice(2)))||(p.startsWith("m:")&&MONTHS.includes(p.slice(2))));
+  if(!valid(state.per))state.per=defaultPer();
+  render();
+}
+function sync(){render()}
+$("#fPer").onchange=e=>{state.per=e.target.value;sync()};
+$("#fDist").onchange=e=>{state.dist=e.target.value;sync()};
+$("#ch2m").onchange=e=>{state.ch2=e.target.value;renderCharts()};
+$("#metSeg").onclick=e=>{const b=e.target.closest("button[data-m]");if(b){state.met=+b.dataset.m;renderGroups()}};
+$("#reload").onclick=load;
+load();
+setInterval(()=>{if(SOURCE.mode==="live")load()},REFRESH_MS);
+</script>
+</body>
+</html>
