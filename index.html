@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<base target="_top">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STK Haftalık Rapor Girişi · Saadet Antalya</title>
+<link rel="icon" href="https://antalyasaadet.github.io/egitim-raporu/favicon.png">
+<script src="config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{--red:#cd272d;--red-d:#a91c22;--redsoft:#fbe4e5;--bg:#f7f4f1;--card:#fff;--ink:#1d1b19;--ink2:#47423d;--muted:#857f78;--line:#e7e0d8;
+  --good:#1f7a4d;--goodsoft:#e2f3e9;--warn:#a86a00;--warnsoft:#fff3dc;
+  --g-kt:#3f6fb5;--g-kt-s:#e7eef9;--g-zy:#5e8a2e;--g-zy-s:#eef4e4;--g-dv:#7a4fa3;--g-dv-s:#f1eaf8;
+  --head:Montserrat,Inter,system-ui,"Segoe UI",Arial,sans-serif;--sans:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 40px}
+header{background:#fff;border-top:4px solid var(--red);border-bottom:1px solid var(--line)}
+header .wrap{padding:14px 14px 14px;display:flex;gap:12px;align-items:center}
+.mark{font-family:var(--head);font-weight:800;color:var(--red);font-size:20px;letter-spacing:.02em;line-height:1}
+.mark small{display:block;font-size:9.5px;letter-spacing:.16em;color:var(--ink2);font-weight:700;margin-top:3px}
+.sep{width:1px;height:34px;background:var(--line)}
+header h1{font-family:var(--head);font-size:15px;margin:0;line-height:1.25}
+header p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-top:14px;overflow:hidden;box-shadow:0 1px 2px rgba(60,20,20,.04)}
+.card h2{font-family:var(--head);font-size:14px;margin:0;padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;letter-spacing:.01em}
+.card h2::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--red)}
+.body{padding:14px 16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:12.5px;font-weight:600;color:var(--ink2)}
+label.f span.h{font-weight:400;color:var(--muted);font-size:11.5px}
+input,select,textarea{font:inherit;color:inherit;border:1px solid var(--line);border-radius:9px;padding:10px 11px;background:#fff;width:100%;min-height:44px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-offset:0;border-color:var(--red)}
+textarea{min-height:84px;resize:vertical}
+.hint{font-size:12px;color:var(--muted);margin-top:8px}
+.badge{display:inline-block;background:var(--redsoft);color:var(--red-d);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600}
+
+
+.grp{border-left:6px solid var(--gc)}
+.grp>summary{list-style:none;cursor:pointer;padding:12px 14px;background:var(--gs);display:flex;align-items:center;gap:10px}
+.grp>summary::-webkit-details-marker{display:none}
+.grp>summary .t{font-family:var(--head);font-weight:700;font-size:13.5px;flex:1;color:var(--ink)}
+.grp>summary .s{font-size:12px;color:var(--ink2);white-space:nowrap}
+.grp>summary .chev{transition:transform .2s;color:var(--gc);font-weight:700}
+.grp[open]>summary .chev{transform:rotate(90deg)}
+.item{padding:11px 14px;border-top:1px solid var(--line)}
+.item .nm{font-weight:600;font-size:13.5px;margin-bottom:8px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.trio label{display:flex;flex-direction:column;gap:3px;font-size:11px;color:var(--muted);font-weight:600}
+.trio input{text-align:center;font-weight:600;padding:9px 6px}
+.item.filled{background:#fffdfb}
+.item.warn .nm::after{content:" · Faaliyet sayısını kontrol edin";color:var(--warn);font-weight:500;font-size:12px}
+
+
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sum div{background:var(--bg);border-radius:10px;padding:10px;text-align:center}
+.sum b{display:block;font-family:var(--head);font-size:22px;color:var(--red)}
+.sum span{font-size:11.5px;color:var(--ink2)}
+.msgs{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.msg{border-radius:10px;padding:10px 12px;font-size:13px}
+.msg.err{background:var(--redsoft);color:var(--red-d)}
+.msg.warn{background:var(--warnsoft);color:var(--warn)}
+.msg.ok{background:var(--goodsoft);color:var(--good)}
+.btns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+button{font:inherit;font-weight:700;border-radius:10px;padding:13px 18px;border:1px solid var(--line);background:#fff;cursor:pointer;min-height:48px}
+button.pri{background:var(--red);border-color:var(--red);color:#fff;flex:1}
+button.pri:hover{background:var(--red-d)}
+button:disabled{opacity:.6;cursor:wait}
+.done{text-align:center;padding:36px 18px}
+.done .ic{width:64px;height:64px;border-radius:50%;background:var(--goodsoft);color:var(--good);display:grid;place-items:center;font-size:32px;margin:0 auto 12px}
+.done h2{border:0;justify-content:center;font-size:18px}
+.done h2::before{display:none}
+footer{text-align:center;font-size:11.5px;color:var(--muted);margin-top:22px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="mark">SAADET<small>ANTALYA</small></div><div class="sep"></div>
+  <div><h1>STK ve Halkla İlişkiler Başkanlığı<br>Haftalık Rapor</h1><p>İlçe STK ve Halkla İlişkiler Başkanı tarafından her hafta doldurulur.</p></div>
+</div></header>
+
+<div class="wrap">
+<form id="frm" novalidate>
+  <section class="card"><h2>Rapor bilgileri</h2><div class="body">
+    <div class="row">
+      <label class="f">İlçe<select id="ilce" required><option value="">İlçe seçin…</option></select></label>
+      <label class="f">Ad Soyad<input id="ad" autocomplete="name" placeholder="İlçe STK ve Halkla İlişkiler Başkanı" required></label>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <label class="f">Rapor haftası <span class="h">Pazartesi – Pazar</span><select id="hafta" required></select></label>
+      <label class="f">Toplantı tarihi <span class="h">Birim toplantısı yapıldıysa</span><input id="tarih" type="date"></label>
+    </div>
+    <div class="hint">Ay: <span class="badge" id="ay">—</span></div>
+  </div></section>
+
+  <section class="card"><h2>Haftalık birim toplantısı</h2><div class="body">
+    <div class="row">
+      <label class="f">Birim üye sayısı<input id="uye" type="number" inputmode="numeric" min="0" step="1" placeholder="0"></label>
+      <label class="f">Toplantı katılım sayısı<input id="katilim" type="number" inputmode="numeric" min="0" step="1" placeholder="0"></label>
+    </div>
+  </div></section>
+
+  <section class="card" style="overflow:visible;background:transparent;border:0;box-shadow:none">
+    <h2 style="background:#fff;border:1px solid var(--line);border-radius:14px">Faaliyet raporu <span style="font-family:var(--sans);font-weight:400;font-size:12px;color:var(--muted);margin-left:auto">Boş bırakılan alan 0 sayılır</span></h2>
+    <div id="gruplar"></div>
+  </section>
+
+  <section class="card"><h2>Notlar <span style="font-family:var(--sans);font-weight:400;font-size:12px;color:var(--muted);margin-left:auto">İsteğe bağlı · panoda görünür</span></h2><div class="body">
+    <textarea id="not" maxlength="1000" placeholder="Haftanın öne çıkan çalışmaları (ör. ziyaret edilen dernek, katılınan kongre)…"></textarea>
+  </div></section>
+
+  <section class="card"><h2>Özet ve gönder</h2><div class="body">
+    <div class="sum">
+      <div><b id="tF">0</b><span>Faaliyet</span></div>
+      <div><b id="tU">0</b><span>Ulaşılan kişi</span></div>
+      <div><b id="tG">0</b><span>Katılan görevli</span></div>
+    </div>
+    <div class="msgs" id="msgs"></div>
+    <div class="btns" id="btnsMain"><button type="submit" class="pri" id="gonder">Raporu gönder</button></div>
+    <div class="btns" id="btnsVar" hidden>
+      <button type="button" class="pri" id="evetYaz">Evet, eski raporun yerine kaydet</button>
+      <button type="button" id="vazgec">Vazgeç</button>
+    </div>
+  </div></section>
+</form>
+
+<section class="card done" id="bitti" hidden>
+  <div class="ic">✓</div>
+  <h2>Raporunuz kaydedildi</h2>
+  <p id="bittiTxt" style="color:var(--ink2);margin:6px 0 18px"></p>
+  <button type="button" id="yeni">Yeni rapor gir</button>
+</section>
+
+<footer>Saadet Partisi Antalya İl Başkanlığı · STK ve Halkla İlişkiler Komisyonu</footer>
+</div>
+
+<script>
+const AYAR = {"ilceler":["Akseki","Aksu","Alanya","Demre","Döşemealtı","Elmalı","Finike","Gazipaşa","Gündoğmuş","İbradı","Kaş","Kemer","Kepez","Konyaaltı","Korkuteli","Kumluca","Manavgat","Muratpaşa","Serik"],"gruplar":[{"id":"kt","ad":"Katılım ve Temsil Faaliyetleri","kalemler":[["STK, Milko, Vakıf, Dernek ve Sendika Faaliyetlerine Katılım","STK, vakıf, dernek faaliyetleri"],["Resmi Programlara ve Spor Müsabakalarına Katılım","Resmi program ve spor"],["Nişan, Düğün, Cenaze ve Taziyelere Katılım","Nişan, düğün, cenaze, taziye"],["Fuar, Panayır, Açılış, Kutlama, Mahalle/Köy Etkinliklerine Katılım","Fuar, panayır, açılış, mahalle/köy"],["Siyasi Partilerin ve STK'ların Kongrelerine Katılım","Parti ve STK kongreleri"],["Diğer Faaliyetlere Katılım","Diğer faaliyetler"]]},{"id":"zy","ad":"Ziyaretler","kalemler":[["Cadde, Sokak, Kafe ve Kahvehane Ziyaretleri","Cadde, sokak, kafe, kahvehane"],["Resmi Kurum, Belediye ve Muhtarlar Ziyaretleri","Resmi kurum, belediye, muhtar"],["STK, Vakıf, Dernek ve Sendika, Aile Ziyaretleri","STK, vakıf, dernek, aile"],["Hemşeri ve Kültürel Dernekler, Gençlik STK'ları, Spor Kulüpleri Ziyareti","Hemşeri, gençlik, spor kulübü"],["Etkili Fertler, Kanaat Önderleri, Cami, Cami Dernekleri, Cemaat, İmam Ziyareti","Kanaat önderi, cami, cemaat"],["Esnaf, İşyeri, Sanayi Siteleri, Meslek Odaları ve Meslek Grupları Ziyareti","Esnaf, sanayi, meslek odası"],["Hac-Umre, Hasta, Hastane ve Huzurevi Ziyareti","Hac-umre, hasta, huzurevi"],["Yapılan Diğer Ziyaretler","Diğer ziyaretler"]]},{"id":"dv","ad":"Partimizin Etkinliklerine Davetler","kalemler":[["Şehit-Gazi Aileleri/Dernekleri, Kanaat Önderleri (Emekli Müftü, İmam)","Şehit-gazi aileleri, kanaat önderleri"],["Konferans, Sohbet, Piknik, İftar, Kahvaltı vb. Çalışmalarımıza Davetler","Konferans, sohbet, piknik, iftar"],["Hemşeri ve Kültürel Dernek Başkanları / Üyeleri Daveti","Hemşeri ve kültür dernekleri"],["Esnaflar, Esnaf Odaları ve Meslek Örgütleri","Esnaf ve meslek örgütleri"],["Emekliler, Engelliler, Muhtarlar, Sporcular ve Dernekler","Emekli, engelli, muhtar, sporcu"],["Bunların Dışındaki Diğer Kesimleri Partimize Davetler","Diğer kesimler"]]}],"metrikler":["Faaliyet Sayısı","Ulaşılan Kişi Sayısı","Katılan Görevli Sayısı"]};
+const GAS = typeof google!=="undefined"&&google.script&&google.script.run;
+const API = window.API_URL || "";
+const AYLAR=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+const RENK={kt:["var(--g-kt)","var(--g-kt-s)"],zy:["var(--g-zy)","var(--g-zy-s)"],dv:["var(--g-dv)","var(--g-dv-s)"]};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ymd=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const kdate=k=>{const [y,m,d]=k.split("-").map(Number);return new Date(y,m-1,d)};
+function monday(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-(x.getDay()+6)%7);return x}
+function wlabel(k){const a=kdate(k),b=new Date(a);b.setDate(a.getDate()+6);
+  return a.getMonth()===b.getMonth()?`${a.getDate()}–${b.getDate()} ${AYLAR[a.getMonth()]} ${a.getFullYear()}`:`${a.getDate()} ${AYLAR[a.getMonth()]} – ${b.getDate()} ${AYLAR[b.getMonth()]} ${b.getFullYear()}`}
+function ayOf(k){const t=kdate(k);t.setDate(t.getDate()+3);return AYLAR[t.getMonth()]+" "+t.getFullYear()}
+const store={get(k){try{return localStorage.getItem("stk_"+k)}catch(e){return null}},set(k,v){try{localStorage.setItem("stk_"+k,v)}catch(e){}}};
+
+
+$("#ilce").insertAdjacentHTML("beforeend",AYAR.ilceler.map(i=>`<option>${esc(i)}</option>`).join(""));
+(function(){
+  const today=new Date(),cur=monday(today),opts=[];
+  for(let i=0;i<8;i++){const d=new Date(cur);d.setDate(cur.getDate()-7*i);opts.push(ymd(d))}
+  // Pazartesi-Salı günleri genellikle geçen haftanın raporu girilir
+  const def=today.getDay()===1||today.getDay()===2?opts[1]:opts[0];
+  $("#hafta").innerHTML=opts.map((k,i)=>`<option value="${k}">${wlabel(k)}${i===0?" (bu hafta)":i===1?" (geçen hafta)":""}</option>`).join("");
+  $("#hafta").value=def;
+})();
+let idx=0;const INPUTS=[];
+$("#gruplar").innerHTML=AYAR.gruplar.map((g,gi)=>{
+  const [c,s]=RENK[g.id]||["var(--red)","var(--redsoft)"];
+  return `<details class="card grp" style="--gc:${c};--gs:${s}" open data-g="${gi}">
+    <summary><span class="t">${esc(g.ad)}</span><span class="s" data-gs="${gi}">0 faaliyet</span><span class="chev">›</span></summary>
+    ${g.kalemler.map(k=>{const b=idx;idx+=3;return `<div class="item" data-b="${b}"><div class="nm">${esc(k[0])}</div><div class="trio">
+      ${AYAR.metrikler.map((m,mi)=>`<label>${esc(m.replace(" Sayısı",""))}<input type="number" inputmode="numeric" min="0" step="1" placeholder="0" data-i="${b+mi}" aria-label="${esc(k[0])} – ${esc(m)}"></label>`).join("")}
+    </div></div>`}).join("")}</details>`}).join("");
+document.querySelectorAll("#gruplar input").forEach(el=>INPUTS[+el.dataset.i]=el);
+
+function syncHafta(){const k=$("#hafta").value;$("#ay").textContent=ayOf(k);
+  const t=$("#tarih");const a=kdate(k),b=new Date(a);b.setDate(a.getDate()+6);t.min=ymd(a);t.max=ymd(b);
+  if(t.value&&(t.value<t.min||t.value>t.max))t.value=""}
+$("#hafta").onchange=syncHafta;syncHafta();
+
+
+const sI=store.get("ilce"),sA=store.get("ad"),sU=store.get("uye");
+if(sI&&AYAR.ilceler.includes(sI))$("#ilce").value=sI; if(sA)$("#ad").value=sA; if(sU)$("#uye").value=sU;
+
+
+function val(el){const v=String(el.value||"").trim();if(v==="")return 0;const n=Number(v);return Number.isInteger(n)&&n>=0?n:NaN}
+function collect(){return{ilce:$("#ilce").value,ad:$("#ad").value.trim(),hafta:$("#hafta").value,tarih:$("#tarih").value,
+  uye:val($("#uye")),katilim:val($("#katilim")),d:INPUTS.map(val),not:$("#not").value.trim()}}
+function totals(d){const t=[0,0,0];d.forEach((v,i)=>{if(v>0)t[i%3]+=v});return t}
+function refresh(){
+  const v=collect();const t=totals(v.d);
+  $("#tF").textContent=t[0].toLocaleString("tr-TR");$("#tU").textContent=t[1].toLocaleString("tr-TR");$("#tG").textContent=t[2].toLocaleString("tr-TR");
+  let b=0;AYAR.gruplar.forEach((g,gi)=>{let s=0;g.kalemler.forEach(()=>{s+=(v.d[b]>0?v.d[b]:0);b+=3});$(`[data-gs="${gi}"]`).textContent=`${s} faaliyet`});
+  document.querySelectorAll(".item").forEach(it=>{const i=+it.dataset.b;const f=v.d[i],u=v.d[i+1],g=v.d[i+2];
+    it.classList.toggle("filled",f>0||u>0||g>0);it.classList.toggle("warn",!(f>0)&&(u>0||g>0))});
+}
+document.addEventListener("input",e=>{if(e.target.matches("input,textarea,select"))refresh()});
+refresh();
+
+function check(v){
+  const err=[],warn=[];
+  if(!v.ilce)err.push("İlçe seçilmedi.");
+  if(v.ad.length<3)err.push("Ad soyad yazılmadı.");
+  if([v.uye,v.katilim,...v.d].some(Number.isNaN))err.push("Sayı alanlarına yalnızca 0 veya pozitif tam sayı girilebilir.");
+  if(v.uye>0&&v.katilim>v.uye)err.push("Toplantı katılım sayısı, birim üye sayısından büyük olamaz.");
+  const t=totals(v.d);
+  if(!v.uye)warn.push("Birim üye sayısı girilmedi.");
+  if(t[0]===0)warn.push("Hiç faaliyet girilmedi. Bu hafta faaliyet olmadıysa yine de gönderebilirsiniz.");
+  const eksik=[];for(let i=0;i<v.d.length;i+=3)if(!(v.d[i]>0)&&(v.d[i+1]>0||v.d[i+2]>0))eksik.push(i/3);
+  if(eksik.length)warn.push(`${eksik.length} kalemde kişi/görevli sayısı var ama faaliyet sayısı 0.`);
+  return{err,warn}
+}
+function show(list){$("#msgs").innerHTML=list.map(([c,t])=>`<div class="msg ${c}">${esc(t)}</div>`).join("")}
+
+
+let pending=null,warned=false;
+function send(over){
+  const v=pending;const btn=over?$("#evetYaz"):$("#gonder");btn.disabled=true;btn.textContent="Gönderiliyor…";
+  const runner=GAS?google.script.run:{_s:null,_f:null,withSuccessHandler(f){this._s=f;return this},withFailureHandler(f){this._f=f;return this},
+    kaydet(v,o){fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({islem:"kaydet",v,uzerineYaz:o})})
+      .then(r=>r.json()).then(d=>d.hata?this._f({message:d.hata}):this._s(d.sonuc)).catch(()=>this._f(null))}};
+  runner.withSuccessHandler(r=>{
+    btn.disabled=false;btn.textContent=over?"Evet, eski raporun yerine kaydet":"Raporu gönder";
+    if(r&&r.durum==="var"){$("#btnsMain").hidden=true;$("#btnsVar").hidden=false;
+      show([["warn",`${v.ilce} için ${wlabel(v.hafta)} haftasına ait bir rapor zaten var. Bu raporu eskisinin yerine kaydetmek ister misiniz?`]]);return}
+    store.set("ilce",v.ilce);store.set("ad",v.ad);if(v.uye)store.set("uye",String(v.uye));
+    $("#frm").hidden=true;$("#bitti").hidden=false;
+    $("#bittiTxt").textContent=`${v.ilce} · ${wlabel(v.hafta)}${r&&r.guncellendi?" (önceki rapor güncellendi)":""}. Teşekkür ederiz.`;
+    scrollTo(0,0);
+  }).withFailureHandler(e=>{btn.disabled=false;btn.textContent=over?"Evet, eski raporun yerine kaydet":"Raporu gönder";
+    show([["err",(e&&e.message)||"Kaydedilemedi. İnternet bağlantınızı kontrol edip tekrar deneyin."]])}).kaydet(v,!!over);
+}
+$("#frm").onsubmit=e=>{
+  e.preventDefault();const v=collect();const {err,warn}=check(v);
+  if(err.length){show(err.map(t=>["err",t]));warned=false;return}
+  if(warn.length&&!warned){warned=true;show([...warn.map(t=>["warn",t]),["warn","Kontrol ettiyseniz göndermek için butona tekrar basın."]]);$("#gonder").textContent="Yine de gönder";return}
+  warned=false;pending=v;show([]);send(false)};
+document.addEventListener("input",()=>{if(warned){warned=false;$("#gonder").textContent="Raporu gönder"}});
+$("#evetYaz").onclick=()=>send(true);
+$("#vazgec").onclick=()=>{$("#btnsVar").hidden=true;$("#btnsMain").hidden=false;show([])};
+$("#yeni").onclick=()=>{
+  INPUTS.forEach(el=>el.value="");["#katilim","#tarih","#not"].forEach(s=>$(s).value="");
+  $("#btnsVar").hidden=true;$("#btnsMain").hidden=false;show([]);refresh();
+  $("#bitti").hidden=true;$("#frm").hidden=false;scrollTo(0,0)};
+</script>
+</body>
+</html>
